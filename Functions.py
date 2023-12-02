@@ -20,8 +20,10 @@ def ev_calc(pref_rate,opp_rate,bet_amt):
     else:
         opp_odds = 100 / (opp_rate+100)
         losses = bet_amt * opp_odds
-    ev = winning / losses
+    ev = winning - losses
     return ev
+
+
 
     
     

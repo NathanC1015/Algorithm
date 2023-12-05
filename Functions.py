@@ -117,7 +117,7 @@ def ev():
     bet_amt = float(input("How much are you betting?: "))
     winning_odds = adj_probWin()# equal to top10 probabilities
     losing = 1
-    
+    luck = luck_gen()
     while bet_amt < 0:
         print("You have entered an invalid number!")
         bet_amt = float(input("How much are you betting?: "))
@@ -131,9 +131,9 @@ def ev():
         ev = (payout * winning_odds[elem]) - (bet_amt * losing)
         losing = 1
         if ev < 0:
-            print(f"For your bet, ${bet_amt}, you expect to lose ${abs(ev):.2f} and your odds of winning are {winning_odds[elem]*100:.2f}%")
+            print(f"For your bet, ${bet_amt}, you expect to lose ${abs(ev):.2f} and your odds of winning are {winning_odds[elem]*100:.2f}% and your luck is " + luck)
         else:
-            print(f"For your bet, ${bet_amt}, you expect to gain ${ev:.2f} and your odds of winning are {winning_odds[elem]*100:.2f}%")
+            print(f"For your bet, ${bet_amt}, you expect to gain ${ev:.2f} and your odds of winning are {winning_odds[elem]*100:.2f}% and your luck is " + luck)
     return []
     
 

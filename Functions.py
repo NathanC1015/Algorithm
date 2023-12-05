@@ -10,7 +10,7 @@ REMEMBER: USE THIS FUNCTION TWICE TO COMPARE PINNACLE'S ODDS VS. ANY OTHER BOOK'
 '''
 
 from itertools import combinations
-
+import random
 
 def adj_probWin():
     hit, noHit = player_lines()
@@ -134,7 +134,9 @@ def ev():
         print(f"For your bet, ${bet_amt}, you expect to gain ${ev:.2f} and your odds of winning are {winning}")
     return []
 
-
+def luck_gen():
+    luck = random.randint(0,1)
+    return luck
         
     
     

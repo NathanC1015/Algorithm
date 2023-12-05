@@ -8,9 +8,9 @@ Because of this, there is value to be made from betting on Caesar's, assuming th
 This function returns a string to make for easy reading, but appending to a list will be very aids.
 REMEMBER: USE THIS FUNCTION TWICE TO COMPARE PINNACLE'S ODDS VS. ANY OTHER BOOK's ODDS.
 '''
-
-from itertools import combinations
 import random
+from itertools import combinations
+
 
 def adj_probWin():
     hit, noHit = player_lines()
@@ -98,8 +98,8 @@ def player_lines():
         line_against = opp_rate[:-4]
         chance_against = opp_rate[-4:]
         odds_against[line_against] = float(chance_against)
-        line = pref_rate[:-4]
-        chance = pref_rate[-4:]
+        line = pref_rate[:-5].strip()
+        chance = pref_rate[-4:].strip()
         odds[line] = float(chance)
         pref_rate = (input("What is the line you're hitting?: "))
         if pref_rate == '':
@@ -109,13 +109,12 @@ def player_lines():
     return odds, odds_against
 
 
-multiplier = {3.0:10, 5.0:20}
+multiplier = {3.0:6, 5.0:20}
 
 
 def ev():
     legs = float(input("How many legs do you want?: "))
     bet_amt = float(input("How much are you betting?: "))
-    winning = 1
     winning_odds = adj_probWin()# equal to top10 probabilities
     losing = 1
     
@@ -127,17 +126,20 @@ def ev():
     #     winning_odds.append(adj_probWin()[0])
     # for x in winning_odds:
     #     winning *= x
-    for elem in range(10):
+    for elem in range(len(winning_odds)):
         losing -= winning_odds[elem]
-        ev = (payout * winning) - (bet_amt * losing)
+        ev = (payout * winning_odds[elem]) - (bet_amt * losing)
         losing = 1
-        print(f"For your bet, ${bet_amt}, you expect to gain ${ev:.2f} and your odds of winning are {winning}")
+        if ev < 0:
+            print(f"For your bet, ${bet_amt}, you expect to lose ${abs(ev):.2f} and your odds of winning are {winning_odds[elem]*100:.2f}%")
+        else:
+            print(f"For your bet, ${bet_amt}, you expect to gain ${ev:.2f} and your odds of winning are {winning_odds[elem]*100:.2f}%")
     return []
+    
 
 def luck_gen():
     luck = random.randint(0,1)
     return luck
-        
     
     
-    
+

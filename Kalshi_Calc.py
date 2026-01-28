@@ -17,6 +17,6 @@ while True:
     entry_dollars = float(input("Enter your UNDERDOG entry dollars (<= 50): "))
 
 
-    fav_mult_now = float(input("Enter 0 to quit"))
+    fav_mult_now = float(input("Enter 0 to quit : "))
     if fav_mult_now == 0:
         break

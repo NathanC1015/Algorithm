@@ -16,6 +16,7 @@ while True:
     entry_mult = float(input("Enter your UNDERDOG entry multiplier (e.g. 2.1): "))
     entry_dollars = float(input("Enter your UNDERDOG entry dollars (<= 50): "))
 
+
     fav_mult_now = float(input("Enter 0 to quit"))
     if fav_mult_now == 0:
         break
